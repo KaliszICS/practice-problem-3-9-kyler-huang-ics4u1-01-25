@@ -11,7 +11,7 @@ void fibonacciTest1() {
     Class<?> testClass = PracticeProblem.class;
     try {
         Class<?>[] cArg = {int.class};
-        Method method = testClass.getDeclaredMethod("fib", cArg);
+        Method method = testClass.getDeclaredMethod("towerOfHanoi", cArg);
   // Enter code here
     assertEquals(0, (int)method.invoke(null, 0));
 }
