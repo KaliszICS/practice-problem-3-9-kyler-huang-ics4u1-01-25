@@ -1,27 +1,38 @@
+import java.util.ArrayList;
+
 public class PracticeProblem {
 
-	public static void main(String args[]) {
+    // Tower of Hanoi
+    public static String[] towerOfHanoi(int n) {
+        ArrayList<String> movesList = new ArrayList<>();
+        solveHanoi(n, 'L', 'R', 'M', movesList);
+        return movesList.toArray(new String[0]);
+    }
 
-	}
+    // Recursive helper
+    // n = number of disks
+    // from = source peg
+    // to = target peg
+    // aux = auxiliary peg
+    // moves = list to store moves
+    private static void solveHanoi(int n, char from, char to, char aux, ArrayList<String> moves) {
+        if (n == 0) return; // base case: no disk to move
 
-	public static void q1() {
-		//Write question 1 code here
-	}
+        // Move n-1 disks from 'from' to 'aux' using 'to' as auxiliary
+        solveHanoi(n - 1, from, aux, to, moves);
 
-	public static void q2() {
-		//Write question 2 code here
-	}
+        // Move the nth disk from 'from' to 'to'
+        moves.add("" + from + to);
 
-	public static void q3() {
-		//Write question 3 code here
-	}
+        // Move the n-1 disks from 'aux' to 'to' using 'from' as auxiliary
+        solveHanoi(n - 1, aux, to, from, moves);
+    }
 
-	public static void q4() {
-		//Write question 4 code here
-	}
-
-	public static void q5() {
-		//Write question 5 code here
-	}
-
+    // Optional main for testing
+    public static void main(String[] args) {
+        String[] moves = towerOfHanoi(3);
+        for (String move : moves) {
+            System.out.println(move);
+        }
+    }
 }
